@@ -11,7 +11,7 @@ Ver      Date        Author        Description
 
 -- Q1: What is the average house price by neighborhood?
 SELECT neighborhood, AVG(price) AS avg_price
-FROM dbo.[HousePrices]
+FROM dbo.[HousePrice]
 GROUP BY neighborhood;
 
 -- Q2: How many houses have more than three bedrooms and more than two bathrooms?
