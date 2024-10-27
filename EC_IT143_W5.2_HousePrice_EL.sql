@@ -5,7 +5,7 @@ PURPOSE: Answer questions related to HousePrice dataset.
 MODIFICATION LOG:
 Ver      Date        Author        Description
 -----   ----------   -----------   -------------------------------------------------------------------------------
-1.0     10/23/2024   Collins Nana Antwi Kodua       1. Built this script to answer questions for HousePrice dataset.
+1.0     10/26/2024   Egbebo Luther       1. Built this script to answer questions for HousePrice dataset.
 
 ******************************************************************************************************************/
 
