@@ -9,24 +9,25 @@ Ver      Date        Author        Description
 
 ******************************************************************************************************************/
 
--- Q1: What is the average price of each type of mobile device?
-SELECT device_type, AVG(price) AS avg_price
-FROM dbo.[MobileDevices]
-GROUP BY device_type;
+-- Q1: What is the average screen time for each type of mobile device?
+SELECT Screen_On_Time_hours_day, AVG(Screen_On_Time_hours_day) AS avg_Screen_On_Time_hours_day
+FROM dbo.[MobileDevice]
+GROUP BY Screen_On_Time_hours_day;
 
--- Q2: How many devices have storage capacities greater than 128GB?
-SELECT COUNT(*) AS num_devices
-FROM dbo.[MobileDevices]
-WHERE storage > 128;
+-- Q2: How many devices are used predominantly by a specific gender?
+SELECT Gender, COUNT(*) AS num_devices
+FROM dbo.[MobileDevice]
+GROUP BY gender;
 
--- Q3: Which brand has the highest average price across its devices?
-SELECT brand, AVG(price) AS avg_price
-FROM dbo.[MobileDevices]
-GROUP BY brand
-ORDER BY avg_price DESC
-LIMIT 1;
+-- Q3: Which Device is used the most across all devices?
+SELECT Device_Model, COUNT(*) AS usage_count
+FROM dbo.[MobileDevice]
+GROUP BY Device_Model
+ORDER BY usage_count DESC;
 
--- Q4: What is the total number of devices available for each brand?
-SELECT brand, COUNT(device_id) AS num_devices
-FROM dbo.[MobileDevices]
-GROUP BY brand;
+
+-- Q4: What is the total screen time reported for each device type?
+SELECT Screen_On_Time_hours_day, SUM(Screen_On_Time_hours_day) AS total_screen_time
+FROM dbo.[MobileDevice]
+GROUP BY Screen_On_Time_hours_day;
+

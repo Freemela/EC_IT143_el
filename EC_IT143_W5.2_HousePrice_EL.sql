@@ -9,24 +9,29 @@ Ver      Date        Author        Description
 
 ******************************************************************************************************************/
 
--- Q1: What is the average house price by neighborhood?
-SELECT neighborhood, AVG(price) AS avg_price
+-- Q1: What is the average house price by bedrooms?
+SELECT bedrooms, AVG(price) AS avg_price
 FROM dbo.[HousePrice]
-GROUP BY neighborhood;
+GROUP BY bedrooms;
 
 -- Q2: How many houses have more than three bedrooms and more than two bathrooms?
 SELECT COUNT(*) AS num_houses
-FROM dbo.[HousePrices]
-WHERE bedrooms > 3 AND bathrooms > 2;
+FROM dbo.[HousePrice]
+WHERE bedrooms > 3 AND real_bathrooms > 2;
 
--- Q3: What is the average square footage of homes built after the year 2000?
-SELECT AVG(square_footage) AS avg_square_footage
-FROM dbo.[HousePrices]
-WHERE year_built > 2000;
+-- How many houses are still in perfect condition after the year 2010?
+SELECT COUNT(*) AS perfect_condition_count
+FROM dbo.[HousePrice]
+WHERE perfect_condition = 1 AND YEAR(date) > 2010;
 
--- Q4: Which neighborhoods have houses with an average price above $500,000?
-SELECT neighborhood, AVG(price) AS avg_price
-FROM dbo.[HousePrices]
-GROUP BY neighborhood
-HAVING AVG(price) > 500000;
+
+-- How many bedrooms have an average house price above $500,000?
+SELECT COUNT(*) AS high_value_bedrooms
+FROM (
+    SELECT bedrooms, AVG(price) AS avg_price
+    FROM dbo.[HousePrice]
+    GROUP BY bedrooms
+    HAVING AVG(price) > 500000
+) AS high_value_areas;
+
 
